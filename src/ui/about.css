@@ -1,13 +1,14 @@
-.btn {
-    margin: 10px;
-    
-}
-
 h1, .btn {
     font-family: sans-serif, 'Times New Roman', Times;
 }
 
-h2, span {
+.btn {
+  margin-top: 3%;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+h1, span {
     color: #626363;
 }
 
@@ -19,14 +20,10 @@ h2, span {
         height: 100%;
       }
 
-#about {
-    position: relative;
-}
-
 .wave {
     position: relative;
     -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
-    font-size: 50px;
+    font-size: 70px;
     margin-bottom: 7%
   }
   
@@ -38,11 +35,7 @@ h2, span {
     animation-delay: calc(0.1s * var(--i));
     transition: transform 0.2s ease-in-out;
   }
-  
-  .wave:hover span {
-    transform: translateY(-20px);
-  }
-  
+   
   @keyframes jump {
     0%, 40%, 100% {
       transform: translateY(0);

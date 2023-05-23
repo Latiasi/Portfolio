@@ -1,3 +1,11 @@
 textarea {
     resize: none;
 }
+
+h2 {
+    padding-top: 3%;
+}
+
+.btn {
+    margin-left: 0;
+}

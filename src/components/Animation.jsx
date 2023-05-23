@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
 function RainAnimation() {
-  const Ref = useRef(null);
+  const canvasRef = useRef(null);
   let width = window.innerWidth;
   let height = window.innerHeight;
   const maxDrops = 25;
-  const drops = [];
+  let drops = [];
 
   class Drop {
     constructor() {
@@ -28,7 +28,7 @@ function RainAnimation() {
     }
 
     draw() {
-      const ctx = Ref.current.getContext('2d');
+      const ctx = canvasRef.current.getContext('2d');
       if (this.y > this.hit) {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y - this.h / 2);
@@ -61,7 +61,6 @@ function RainAnimation() {
     update() {
       if (this.y < this.hit) {
         this.y += this.vy;
-        this.x += 1.5;
       } else {
         if (this.a > 0.03) {
           this.w += this.vw;
@@ -85,8 +84,10 @@ function RainAnimation() {
   function resize() {
     width = window.innerWidth;
     height = window.innerHeight;
-    Ref.current.width = width;
-    Ref.current.height = height;
+    if (canvasRef.current) {
+      canvasRef.current.width = width;
+      canvasRef.current.height = height;
+    }
   }
 
   function setup() {
@@ -99,21 +100,14 @@ function RainAnimation() {
   }
 
   function animate() {
-    if (!Ref.current) return; 
-    const ctx = Ref.current.getContext('2d');
-    if (!ctx) return; 
-    ctx.clearRect(0, 0, width, height);
-    for (const drop of drops) {
-      drop.draw();
+    if (canvasRef.current) {
+      const ctx = canvasRef.current.getContext('2d');
+      ctx.clearRect(0, 0, width, height);
+      for (const drop of drops) {
+        drop.draw();
+      }
     }
     requestAnimationFrame(animate);
-    const handleBeforeUnload = () => {
-        drops.length = 0;
-      };
-      window.addEventListener('beforeunload', handleBeforeUnload);
-      return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
   }
 
   useEffect(() => {
@@ -121,19 +115,17 @@ function RainAnimation() {
     setup();
     animate();
     window.addEventListener('resize', resize);
+
     return () => {
-        window.removeEventListener('resize', resize);
-};
-});
+      window.removeEventListener('resize', resize);
+    };
+  });
 
-return  ( 
-<div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',  pointerEvents: 'none' }}>
-  <canvas ref={Ref}
-  style={{pointerEvents: 'none'}}  />
-</div>
-
-);
+  return (
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+      <canvas ref={canvasRef} style={{ pointerEvents: 'none' }} />
+    </div>
+  );
 }
 
 export default RainAnimation;
-     

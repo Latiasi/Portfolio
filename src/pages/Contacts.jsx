@@ -34,16 +34,16 @@ export const Contacts = () => {
                                 className="w-100"
                                 height="100%"
                                 style={{ filter: "opacity(0.7)" }}
-                                src="https://www.google.com/maps/embed/v1/place?q=Sharpstown+International+School,+Triola+Lane,+Хьюстон,+Техас,+США&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                                src="https://www.google.com/maps/embed/v1/place?q=Sharpstown+International+School&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
                             />
                             <div className="">
                                 <h2 className="font-semibold text-black text-xs mb-1">
                                     ADDRESS
                                 </h2>
-                                <p className="text-black mb-4">
+                                <p className="text-black mt-1">
                                     Sharpstown International School
                                 </p>
-                                <h2 className="font-semibold text-black text-xs mb-1">
+                                <h2 className="font-semibold text-black text-xs">
                                     EMAIL
                                 </h2>
                                 <a href="mailto:tkareem2301@gmail.com" className="text-indigo-400">
@@ -61,7 +61,7 @@ export const Contacts = () => {
                             <h2 className="text-black text-3xl mb-4 font-medium">
                                 Hire Me
                             </h2>
-                            <p className="text-black mb-5">
+                            <p className="text-black">
                                  Please =)
                             </p>
                             <div className="mb-4">
@@ -70,9 +70,11 @@ export const Contacts = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    required
                                     id="name"
                                     name="name"
                                     className="form-control"
+                                    placeholder='Enter your name'
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </div>
@@ -83,7 +85,9 @@ export const Contacts = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    required
                                     name="email"
+                                    placeholder='example@meow.com'
                                     className="form-control"
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
@@ -94,16 +98,18 @@ export const Contacts = () => {
                                 </label>
                                 <textarea
                                     id="message"
+                                    required
                                     name="message"
                                     className="form-control"
+                                    placeholder='Enter your message...'
                                     rows="3"
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
+                                
                             </div>
                             <button
                                 type="submit"
-                                className="btn btn-success"
-                            >
+                                className="btn btn-dark">
                                 Submit
                             </button>
                         </form>

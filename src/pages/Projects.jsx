@@ -5,32 +5,26 @@ const Projects = () => {
         return (
             <section id="projects" className="">
                 <div className="container text-center">
-                    <div className="flex flex-col w-full mb-20">
-                        <h1 className="text-3xl font-medium title-font mb-4 text-black">
+                    <div className="flex flex-col w-full">
+                        <h1 className="text-3xl font-medium title-font mb-2 text-black">
                             My projects
                         </h1>
                         <p className="">
                         If you can find them, text me (really)
                         </p>
                     </div>
-                    <div className="flex flex-wrap -m-4">
+                    <div className="flex flex-wrap">
                         {ProjectsData.map((project) => (
                             <a
                                 href={project.link}
-                                key={project.image}
                                 className="sm:w-1/2 w-100 p-4"
                             >
                                 <div className="flex relative">
-                                    <img
-                                        alt="gallery"
-                                        className="absolute inset-0 w-full h-full object-cover object-center"
-                                        src={project.image}
-                                    />
                                     <div className="">
                                         <h2 className="mb-1">
                                             {project.subtitle}
                                         </h2>
-                                        <h1 className="mb-3">
+                                        <h1 className="">
                                             {project.title}
                                         </h1>
                                         <p className="">{project.description}</p>

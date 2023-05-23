@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export default function Navbar() {
     return (
         <header className="sticky-top z-9">
-        <div className="container-fluid color">
+        <div className="container-fluid">
   <div className="row mx-auto p-5 d-flex justify-content-between align-items-center">
     <div className="col-auto">
       <NavLink to="/" className="link">
